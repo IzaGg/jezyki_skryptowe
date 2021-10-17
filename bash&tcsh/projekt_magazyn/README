@@ -14,6 +14,6 @@ Mozliwe opcje wywolania skryptu:
  -summ    wypisanie ogolnych danych o towarach, (tzn.: liczby produktow w spisie, ilosci wszystkich towarow w spisie i liczebnosci towarow w kazdej z kategorii)
  -print   wypisanie danych o towarach do pliku - Summary_sh.txt. W pliku znajda sie informacje o produktach: dla kazdego podana jego ilosc oraz kategoria, a takze podsumowanie, ktore zawiera liczbe wszystkich produktow w spisie, ilosci wszystkich towarow w spisie oraz liczebnosci towarow w kazdej z kategorii.
 
-Przykladowy plik, na ktorym operuje skrypt: magazyn.csv
+Przykladowy plik, na ktorym operuje skrypt: spis_z_nat.csv
 Moduł: Istnieje
 Przyklad wywolania skryptu: ./sIG_zal.sh spis_z_nat.csv -print -h
