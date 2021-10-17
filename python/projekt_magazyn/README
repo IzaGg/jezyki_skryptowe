@@ -15,5 +15,6 @@ Mozliwe opcje wywolania skryptu:
  -print   wypisanie danych o towarach do pliku - Summary_py.txt. W pliku znajda sie informacje o produktach: dla kazdego podana jego ilosc oraz cena, a takze podsumowanie, ktore zawiera liczbe wszystkich produktow w spisie, ilosci wszystkich towarow w spisie oraz ich laczna wartosc.
 
 
-Przykladowy plik, na ktorym operuje skrypt: magazyn.csv.
+Przykladowy plik, na ktorym operuje skrypt: magazyn.csv
+Moduł konieczny do uruchomienia programu: Istnieje.py
 Przyklad wywolania skryptu: python3 sIG_zal.py magazyn.csv -h -summ
