@@ -2,11 +2,16 @@
 #Izabela Gorlinska grupa 1
 #skrypt zaliczeniowy python
 
-
+from Istnieje import istnieje
 from sys import argv
 from os.path import isfile
 import csv
 import re
+
+class kolor:
+	RED='\033[91m'
+	GREEN='\033[92m'
+	RESET='\033[0m'
 
 def addProduct(spis):
 	print("Dodajesz produkt do spisu - " +spis +" Podaj dane produktu." )
@@ -18,7 +23,7 @@ def addProduct(spis):
 			if i==0:			
 				ilosc=input("To nie liczba sztuk! Podaj poprawnie: ")
 			elif i==2:
-				print("Podano nieprawidlowa wartosc! Nie udalo sie dodac produktu :(")
+				print(kolor.RED +"Podano nieprawidlowa wartosc! Nie udalo sie dodac produktu :(" +kolor.RESET)
 				return
 			else:
 				ilosc=input("Sprobuj jeszcze raz: ")
@@ -33,7 +38,7 @@ def addProduct(spis):
 	with open(spis, 'a+', newline='') as write_file:
 		csv_writer=csv.writer(write_file)
 		csv_writer.writerow([nazwa, ilosc, cena, suma])
-	print("Pomyslnie dodano produkt do spisu :)")
+	print(kolor.GREEN +"Pomyslnie dodano produkt do spisu :)" +kolor.RESET)
 
 
 def removeProduct(spis):
@@ -55,29 +60,12 @@ def removeProduct(spis):
 			with open(spis, 'w', newline='') as write_file:
 				csv_writer=csv.writer(write_file)
 				csv_writer.writerows(list)
-			print("Produkt zostal ususniety.")
+			print(kolor.GREEN +"Produkt zostal ususniety." +kolor.RESET)
 		else:
 			print("Ok. Nie bedziemy usuwac")
 			return
 	showProducts(spis)
 					
-
-def istnieje(spis, prod, l):
-	j=0
-	with open(spis) as csv_file:
-		csv_reader = csv.reader(csv_file, delimiter=',')
-		for row in csv_reader:
-			if row[0]==prod:
-				j=1
-	if  j==1:
-		return j
-	elif l==1:
-		print("Produktu '" +prod +"' nie ma w bazie. Nie udalo sie wprowadzic zmiany ;(")
-		return j
-	else:
-		print("Nie ma produktu '" +prod +"' w bazie " +spis +" :(")
-		return j
-
 
 def changeProduct(spis):
 	print("Zmieniasz dane produktu ze spisu - " +spis)
@@ -106,10 +94,10 @@ def changeProduct(spis):
 					with open(spis, 'w', newline='') as write_file:
 						csv_writer=csv.writer(write_file)
 						csv_writer.writerows(list)
-						print("Edycja zakonczona sukcesem :)")
+						print(kolor.GREEN +"Edycja zakonczona sukcesem :)" +kolor.RESET)
 					print
 				else:
-					print("Edycja wstrzymana")
+					print(kolor.RED +"Edycja wstrzymana" +kolor.RESET)
 					return
 
 	
@@ -146,9 +134,9 @@ def changeProduct(spis):
 					with open(spis, 'w', newline='') as write_file:
 						csv_writer=csv.writer(write_file)
 						csv_writer.writerows(list)
-					print("Edycja zakonczona sukcesem :)")
+					print(kolor.GREEN +"Edycja zakonczona sukcesem :)" +kolor.RESET)
 				else:
-					print("Edycja wstrzymana")
+					print(kolor.RED +"Edycja wstrzymana" +kolor.RESET)
 					return	
 	elif akcja=='3':
 		print("Zmieniasz cene.")
@@ -183,12 +171,12 @@ def changeProduct(spis):
 					with open(spis, 'w', newline='') as write_file:
 						csv_writer=csv.writer(write_file)
 						csv_writer.writerows(list)
-					print("Edycja zakonczona sukcesem :)")
+					print(kolor.GREEN +"Edycja zakonczona sukcesem :)" +kolor.RESET)
 				else:
-					print("Edycja wstrzymana")
+					print(kolor.RED+"Edycja wstrzymana" +kolor.RESET)
 					return
 	else:
-		print("Nie wybrano numeru akcji. Uruchom skrypt ponownie jesli chcesz edytowac")
+		print(kolor.RED +"Nie wybrano numeru akcji. Uruchom skrypt ponownie jesli chcesz edytowac" +kolor.RESET)
 
 
 
@@ -238,7 +226,7 @@ h=0
 f=0
 
 if len(argv)<=1:
-	print ("Nie podano pliku do analizy.\nJesli chcesz dowiedziec sie co ja robie wybierz opcje '-help' :)")
+	print (kolor.RED +"Nie podano pliku do analizy.\nJesli chcesz dowiedziec sie co ja robie wybierz opcje '-help' :)" +kolor.RESET)
 	exit(1)
 else:
 	for pom in range (1, len(argv)):
@@ -246,14 +234,14 @@ else:
 				if h==0:
 					print ("Wywolales skrypt z opcja help.")
 					print("Autor: Izabela Gorlinska\n")
-					print("Ten program jako pierwszy argument przyjmuje plik z danymi (plik csv) - spisem stanu towarow na magazynie.\nPo wywolaniu konkretnej opcji wykonuje odpowiednia dla niej akcje.\nSkrypt mozna uruchomic z 1 lub wieloma opcjami na raz.")
+					print("Ten program jako pierwszy argument przyjmuje plik z danymi (plik csv) - spisem stanu towarow na magazynie i na nim operuje.\nProgram akceptuje tylko 1 plik i na nim pracuje.\nPo wywolaniu konkretnej opcji wykonuje odpowiednia dla niej akcje.\nSkrypt mozna uruchomic z 1 lub wieloma opcjami na raz.")
 					print("\nSkrypt wywolany bez parametrow wypisuje wartosci wszystkich towarow w magazynie oraz liczbę towarów i ich laczna ilosc.\nMozliwe opcje wywolania skryptu:")
 					print(" -add     dodanie produktu do magazynu,")
 					print(" -rem     usuniecie produktu z magazynu,")
 					print(" -change  zmiana nazwy,ilosci lub ceny produktu,")
 					print(" -show    wypisanie towarow, ich ilosci i wartosci,")
 					print(" -summ    wypisanie ogolnych danych o towarach (tzn.: liczby produktow w spisie, ilosci wszystkich towarow i ich wartosci),")		
-					print(" -print   wypisanie danych o towarach do pliku - Summary_py.txt.\n\n")
+					print(" -print   wypisanie danych o towarach do pliku - Summary_py.txt. W pliku znajda sie informacje o produktach: dla kazdego podana jego ilosc oraz cena, a takze podsumowanie, ktore zawiera liczbe wszystkich produktow w spisie, ilosci wszystkich towarow w spisie oraz ich laczna wartosc.\n\n")
 
 					print("Przykladowy plik, na ktorym operuje skrypt: magazyn.csv.\nPrzyklad wywolania skryptu: python3 sIG_zal.py magazyn.csv -h -summ\n");
 					h+=1
@@ -285,9 +273,9 @@ else:
 				print("\nNie znam takiej opcji -'" +argv[pom] +"'. Zajrzyj do pomocy :)\n")
 		
 if f>1:
-	print("Chyba cos jest nie tak - podales za duzo plikow. Sprawdz pomoc i wroc do mnie :)")
+	print(kolor.RED +"Chyba cos jest nie tak - podales za duzo plikow. Sprawdz pomoc i wroc do mnie :)" +kolor.RESET)
 if f==0 and h==0:
-	print ("Nie podano pliku do analizy :(");
+	print (kolor.RED +"Nie podano pliku do analizy :(" +kolor.RESET);
 
 if f==1 and len(argv)==2:
 	print("PRODUKTY z magazynu - " +file)
