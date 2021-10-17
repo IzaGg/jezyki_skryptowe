@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+#Izabela Górlińska grupa 1
+# skrypt 2 - wypisywanie zawartości pliku podanego jako argument + linii wierszy
+
+while (<>) { print "$. $_" }
