@@ -1,2 +1,2 @@
 # jezyki_skryptowe
-Programy i projekty: Bash, Tcsh i Python
+Programy i projekty: Bash, Tcsh, Perl i Python
