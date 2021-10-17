@@ -1,0 +1,20 @@
+Autor: Izabela Gorlinska
+
+Ten program jako argument przyjmuje plik z danymi(plik csv) - spisem stanu towarow na magazynie i na nim operuje.
+Program akceptuje tylko 1 plik i na nim pracuje.
+Po wywolaniu konkretnej opcji wykonuje odpowiednia dla niej akcje.
+Skrypt mozna uruchomic z 1 lub wieloma opcjami na raz.
+
+Skrypt wywolany tylko z pierwszym argumenten (plikiem na ktorym operuje) wypisuje wartosci wszystkich towarow w magazynie oraz liczbę towarów i ich laczna ilosc.
+Mozliwe opcje wywolania skryptu:
+ -add     dodanie produktu do magazynu,
+ -rem     usuniecie produktu z magazynu,
+ -change  zmiana nazwy,ilosci lub ceny produktu,
+ -show    wypisanie towarow, ich ilosci i wartosci,
+ -summ    wypisanie ogolnych danych o towarach (tzn.: liczby produktow w spisie, ilosci wszystkich towarow i ich wartosci),
+ -print   wypisanie danych o towarach do pliku- Summary_pl.txt. W pliku znajda sie informacje o produktach: dla kazdego podana jego ilosc oraz cena, a takze podsumowanie, ktore zawiera liczbe wszystkich produktow w spisie, ilosci wszystkich towarow w spisie oraz ich laczna wartosc.
+
+
+Przykladowy plik, na ktorym operuje skrypt: magazyn.csv
+Moduł: Istnieje.pm
+Przyklad wywolania skryptu: ./sIG_zal.pl magazyn.csv -summ -help
