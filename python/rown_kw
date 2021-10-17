@@ -1,0 +1,30 @@
+#!/usr/bin/python
+#Izabela Gorlinska grupa 1
+#skrypt 12 python 1.4 lab 7.12
+
+import math
+
+a = input("Podaj wspolczynniki rowniania:\n a: ")
+b = input(" b: ")
+c = input(" c: ")
+
+delta= math.pow(b,2)-(4*a*c)
+print ("Delta wynosi:"),
+print delta
+if delta<0:
+	print "Delta<0 - rownanie nie ma rozwiazan rzeczywistych"
+	delta=-1*delta
+	sqrt_delta=math.sqrt(delta)
+	c_rz=float((-1*b)/float(2*a))
+	print ("Rozwiazania rownania: "),
+	print (str(c_rz)+"+"+str(sqrt_delta)+"i"), 
+	print (str(c_rz)+"-"+str(sqrt_delta)+"i") 
+elif delta==0:
+	rozw=(-1*b)/(2*a)
+	print ("Rozwiazanie: "),
+	print rozw
+elif delta>0:
+	rozw1=((-1*b)-math.sqrt(delta))/(2*a)
+	rozw2=((-1*b)+math.sqrt(delta))/(2*a)
+	print ("Rozwiazania rownania: "),
+	print rozw1, rozw2
