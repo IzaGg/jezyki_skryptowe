@@ -1,0 +1,19 @@
+Autor: Izabela Gorlinska
+
+Ten program jako pierwszy argument przyjmuje plik z danymi (.csv), tj. spisem z natury stanu towarow na magazynie i na nim operuje.
+Program akceptuje tylko 1 plik i na nim pracuje
+Po wywolaniu konkretnej opcji wykonuje odpowiednia dla niej akcje.
+Skrypt mozna uruchomic z 1 lub wieloma opcjami na raz.
+Skrypt wywolany bez parametrow wypisuje wartosci (ilosc i kategorie) wszystkich towarow w magazynie orach ich laczna ilosc.
+
+Mozliwe opcje wywolania skryptu:
+ -add     dodanie produktu do spisu,
+ -rem     usuniecie produktu z spisu,
+ -change  zmiana ilosci lub kategorii produktu,
+ -show    wypisanie towarow, ich ilosci i kategorii, do ktorej naleza,
+ -summ    wypisanie ogolnych danych o towarach, (tzn.: liczby produktow w spisie, ilosci wszystkich towarow w spisie i liczebnosci towarow w kazdej z kategorii)
+ -print   wypisanie danych o towarach do pliku - Summary_sh.txt. W pliku znajda sie informacje o produktach: dla kazdego podana jego ilosc oraz kategoria, a takze podsumowanie, ktore zawiera liczbe wszystkich produktow w spisie, ilosci wszystkich towarow w spisie oraz liczebnosci towarow w kazdej z kategorii.
+
+Przykladowy plik, na ktorym operuje skrypt: magazyn.csv
+Moduł: Istnieje
+Przyklad wywolania skryptu: ./sIG_zal.sh spis_z_nat.csv -print -h
