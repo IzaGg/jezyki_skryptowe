@@ -1,0 +1,25 @@
+#!/bin/bash
+#Izabela Górlińska
+
+echo $USER
+getent passwd $USER | cut -d ':' -f 5 | cut -d ',' -f 1
+
+if [ $# == 0 ]; then
+	echo "Skrypt uruchomiono bez parametrów"
+else
+	echo "Skrypt uruchomiono z parametrami: $@"
+
+	if [[ " $@ " =~ " -h " ]]; then
+		echo "Wywołałeś skrypt z opcją -h."
+		echo "Ten skrypt wywołany bez żadnych argumentów podaje login użytkownika oraz jego imię i nazwisko"
+	fi
+	if [[ " $@ " =~ " -help " ]]; then
+		echo "Wywołałeś skrypt z opcją -help."
+		echo  "Ten skrypt wywołany bez żadnych argumentów podaje login użytkownika oraz jego imię i nazwisko"
+	fi
+	if [[ " $@ " =~ " -q " ]] || [[ " $@ " =~ " -quit " ]]; then
+		exit 0
+	else
+		echo "Skrypt uruchomiono z nieznanym parametrem"
+	fi
+fi
